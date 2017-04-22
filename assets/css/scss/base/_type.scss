@@ -1,0 +1,74 @@
+/*------------------------------------*\
+    #TYPE
+\*------------------------------------*/
+
+
+
+
+
+p {
+    margin: 0 0 1.2em;
+	font-weight: 300;
+}
+
+
+
+/**
+  * Text Selection
+*/
+
+::selection {
+    color: $color-white;
+    background-color: $color-alpha;
+    text-shadow: none;
+}
+
+
+/*------------------------------------*\
+    #FONT-STYLES
+\*------------------------------------*/
+
+/**
+  * Unique Font-Family Names, Matching Weights and Styles
+  * To reduce duplicate code we want to separate font styles into their own classes
+  * Based on an article here - http://bit.ly/1OUqwGs
+*/
+
+h1, h2 {
+    margin: 0;
+    font-family: $font;
+    letter-spacing: 0.035em;
+    line-height: 1.2em;
+}
+
+h1 {
+    $fontSize: 2.3em;
+
+    @include mobilefirst(em($bp-md)) {
+        font-size: $fontSize;
+    }
+
+    @include mobilefirst(em($bp-xlg)) {
+        font-size: $fontSize;
+    }
+}
+
+
+/*------------------------------------*\
+    #FONT-SIZING
+\*------------------------------------*/
+
+/**
+  * Assigning a class for each heading style
+  * We now have those styles attached to a very flexible selector that can be moved anywhere
+  * Instead of using the .hN notation (i.e .h1) use abstrat classes of the first six letters of
+  * Greek alphabet. More information here - http://bit.ly/1P2tXJz
+  * Read from an article on CSS Wizary here  - http://bit.ly/1kLpGPM
+*/
+
+
+/**
+  * Abstract classes, this time borrowing SI prefixes.
+  * These classes are the ones above h1 and are the seldom used ones that make stuff massive!
+  * Please use with !!Caution
+*/

@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    #NAVIGATION
+\*------------------------------------*/
+
+
+
+
+
+.nav {
+    @extend %letter-spacing;
+
+    position: absolute;
+    top: 1.25em;
+    left: 1em;
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+
+    font-family: $font;
+
+    @include mobilefirst(em($bp-sm)) {
+        left: 2em;
+    }
+
+    i {
+        @include mobilefirst(em($bp-sm)) {
+            margin-right: 0.5em;
+        }
+    }
+
+    span {
+        display: none;
+        @include mobilefirst(em($bp-sm)) {
+            display: block;
+        }
+    }
+
+    &--black {
+        color: $color-black;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $color-black;
+        }
+    }
+
+    &--white {
+        color: $color-white;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $color-white;
+        }
+    }
+}

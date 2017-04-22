@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    #FUNCTIONS
+\*------------------------------------*/
+
+
+
+
+
+// Convert px font sizes to EM's
+
+@function em($px, $base: 16) {
+    @return ($px / $base) * 1em;
+}
+
+// Convert Photoshop tracking to em
+
+@function tracking($target) {
+    @return ($target / 1000) * 1em;
+}
+
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+@function get-vw($target) {
+    $vw-context: (1000*.01) * 1px;
+    @return ($target/$vw-context) * 1vw;
+}

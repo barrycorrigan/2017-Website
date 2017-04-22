@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    #PRINT
+\*------------------------------------*/
+
+@media print{
+
+	.profile-pic {
+		display: none;
+	}
+
+	.post--light {
+		color: $color-black;
+	}
+}

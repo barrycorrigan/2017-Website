@@ -1,0 +1,184 @@
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+
+
+
+
+
+body {
+    background-color: $color-grey;
+}
+
+
+
+
+/**
+  * Sections
+*/
+
+section {
+    position: relative;
+}
+
+.section-padding {
+    padding: 4em 0;
+
+    &--lg { padding: 6em 0; }
+    &--sm { padding: 2em 0; }
+
+    &__btm {
+        padding: 0 0 4em 0;
+
+        &--lg { padding: 0 0 6em 0; }
+        &--sm {
+            padding: 0 0 2em 0;
+            &:last-of-type {
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+
+
+
+/**
+  * Class Container (BEM)
+*/
+
+[class*='__container'] {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+/**
+  * Footer
+*/
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+
+    @include mobilefirst(em($bp-sm)) {
+        flex-direction: row;
+    }
+
+    &__archive {
+        @include border-slide();
+        @extend %letter-spacing;
+    }
+
+    &__social {
+        display: flex;
+        margin-top: 1em;
+
+        @include mobilefirst(em($bp-sm)) {
+            margin-top: 0;
+        }
+
+        & > *:not(:last-child) {
+            margin-right: 1em;
+        }
+    }
+}
+
+
+
+
+
+/**
+  * Mast
+  * On the Post page for the header section
+*/
+
+.mast {
+    position: relative;
+    height: 35em;
+    color: $color-white;
+    background-color: $color-black;
+
+    &:after {
+        @extend %overlay;
+    }
+
+    &__img {
+        animation: fade-in 2s both;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        line-height: 1.2;
+        @include mobilefirst(em($bp-md)) {
+            width: 60%; 
+        }
+    }
+}
+
+
+.bar {
+    position: relative;
+    background: $color-alpha--light;
+    height: 42px;
+    border-radius: 3px;
+}
+
+.bar-expand {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+	background: $color-black;
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	border-radius: 3px 0 0 3px;
+}
+
+@for $i from 1 through 10 {
+    $full: 10%;
+    .bar-expand--#{$i} {
+        width: ($full * $i);
+    }
+}
+
+.profile-pic {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: 0 0 2em 0;
+    @include mobilefirst(em($bp-md)) {
+        margin: 0;
+    }
+
+    max-width: 100%;
+}
+
+.divide {
+    padding-bottom: 3em;
+    margin-bottom: 3em;
+    border-bottom: 0.5em solid $color-alpha--light;
+}
+
+.titleborder {
+    border-bottom: 0.5em solid $color-alpha;
+    padding-bottom: 0.5em;
+}

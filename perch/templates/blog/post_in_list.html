@@ -1,0 +1,29 @@
+<perch:before>
+<ul itemscope itemtype="http://schema.org/Blog"></perch:before>
+    <li class="preview" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="preview__link">
+
+			<span class="preview__date" itemprop="datePublished" datetime="<perch:blog id="postDateTime" type="date" label="Date" time="true" format="Y-m-d H:i:s" />"><perch:blog id="postDateTime" format="%d %B %Y" /></span>
+
+			<h2 class="preview__header" itemprop="name"><a href="<perch:blog id="postURL" />" itemprop="url" class="preview__headerlink"><perch:blog id="postTitle" /></a></h2>
+
+			<p class="preview__excerpt" itemprop="description"><perch:blog id="excerpt" type="textarea" markdown="true" /></p>
+
+		</div>
+    </li>
+<perch:after>
+</ul>
+<perch:if exists="paging">
+    <div class="pagination">
+        <perch:if exists="not_first_page">
+            <a href="<perch:blog id="prev_url" encode="false" />">Previous</a>
+        </perch:if>
+        <perch:if exists="not_last_page">
+            <a href="<perch:blog id="next_url" encode="false" />">Next</a>
+        </perch:if>
+    </div>
+</perch:if>
+<footer class="section-padding--sm  footer">
+  <a class="footer__archive" href="/blog">Archive</a>
+</footer>
+</perch:after>

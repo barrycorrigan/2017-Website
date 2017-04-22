@@ -1,0 +1,133 @@
+<div class="bg">
+
+    <div class="container">
+
+        <div class="section  section-padding">
+
+            <div class="row">
+
+                <div class="col-sm-12  col-md-3">
+
+                    <img class="profile-pic" src="<perch:content id="profileimage" type="image" label="Profile Image" />" alt="<perch:content id="profilealt" type="text" label="Profile text" />">
+
+                </div>
+
+                <div class="col-sm-12  col-md-9">
+
+                    <div class="post  post__nowidth  post--light">
+
+                        <div class="section-padding__btm--sm">
+
+                            <perch:content id="postDescHTML" type="textarea" label="Post" order="2" editor="markitup" markdown="true" size="xxl autowidth" required="true" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="section-padding">
+
+		<div class="row  divide">
+
+			<div class="col-sm-12  col-md-3">
+				<h2 class="titleborder">Past Work</h2>
+			</div>
+
+			<div class="col-sm-12  col-md-9">
+
+				<div class="clientlist">
+
+					<perch:repeater id="clientlist" label="Client List">
+					<div class="clientlist__item">
+						<perch:if exists="heading">
+						<a href="<perch:content type="text" id="link" label="Link" />" class="hover--opacity">
+							<img class="clientlist__img" src="<perch:content id="clientimg" type="image" label="Image" />" alt="<perch:content type="text" id="title" label="Title" />" />
+						</a>
+						<perch:else />
+							<img class="clientlist__img" src="<perch:content id="clientimg" type="image" label="Image" />" alt="<perch:content type="text" id="title" label="Title" />" />
+						</perch:if>
+					</div>
+					</perch:repeater>
+
+				</div>
+
+			</div>
+
+		</div>
+
+        <div class="post  post__nowidth">
+
+            <perch:blocks>
+
+                <perch:block type="skills" label="Skills">
+
+                    <div class="row  divide">
+
+                        <div class="col-sm-12  col-md-3">
+                            <h2 class="titleborder">Skills</h2>
+                        </div>
+
+                        <perch:repeater id="skillset" label="Skill Set">
+                            <perch:before><div class="col-sm-12  col-md-9"></perch:before>
+                                <div class="section-padding__btm--sm">
+                                    <h3><perch:content type="text" id="title" label="Title" /></h3>
+                                    <div class="bar">
+                                        <span class="bar-expand  bar-expand--<perch:content type="text" id="percentage" label="Percentage" required="true" />"></span>
+                                    </div>
+                                </div>
+                            <perch:after></div></perch:after>
+                        </perch:repeater>
+
+                    </div>
+
+                </perch:block>
+
+                <perch:block type="default" label="Default layout">
+
+                <div class="row  divide">
+
+                    <div class="col-sm-12  col-md-3">
+                        <h2 class="titleborder"><perch:content type="text" id="blocktitle" label="Block Title" /></h2>
+                    </div>
+
+                    <perch:repeater id="skillset" label="Skill Set">
+                        <perch:before><div class="col-sm-12  col-md-9"></perch:before>
+                            <perch:if exists="image">
+                            <div class="row  section-padding__btm--sm">
+                                <div class="col-sm-2">
+                                    <img src="<perch:content id="image" type="image" label="Image" />" alt="<perch:content id="imagealt" type="text" label="Image alt" />" class="companylogo" />
+                                </div>
+                                <div class="col-sm-10">
+                                    <perch:content id="postDescHTML" type="textarea" label="Post" editor="markitup" markdown="true" size="xxl autowidth" />
+                                </div>
+                            </div>
+                            <perch:else />
+                                <div class="section-padding__btm--sm">
+                                    <perch:content id="postDescHTML" type="textarea" label="Post" editor="markitup" markdown="true" size="xxl autowidth" />
+                                </div>
+                            </perch:if>
+                        <perch:after></div></perch:after>
+                    </perch:repeater>
+
+                </div>
+
+                </perch:block>
+
+            </perch:blocks>
+
+        </div>
+
+    </div>
+
+</div>

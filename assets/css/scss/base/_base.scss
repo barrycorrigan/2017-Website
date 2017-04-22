@@ -1,0 +1,174 @@
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+
+
+/**
+  * International box-sizing Awareness Day - Feb 1st
+  * In honor of, you guessed it, the most humble, yet awesome CSS property: box-sizing.
+  * Introduced to us by Paul Irish - http://bit.ly/1bfMrhO
+*/
+
+*, *:before, *:after {
+    @include box-sizing(border-box);
+}
+
+
+body {
+    font-family: $font;
+    font-feature-settings: 'liga' 0;
+    font-size: 100%;
+    color: $color-black;
+    line-height: 1.7;
+    margin: 0;
+
+    @include mobilefirst(em($bp-xsm)) {
+        font-size: 102.5%;
+    }
+
+    @include mobilefirst(em($bp-sm)) {
+        font-size: 105%;
+    }
+
+    @include mobilefirst(em($bp-md)) {
+        font-size: 107.5%;
+    }
+
+    @include mobilefirst(em($bp-lg)) {
+        font-size: 110%;
+    }
+
+    @include mobilefirst(em($bp-xlg)) {
+        font-size: 115%;
+    }
+
+    @include mobilefirst(em($bp-xxlg)) {
+        font-size: 125%;
+    }
+}
+
+figure { margin: 0; }
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+	margin: 2em 0;
+}
+
+blockquote {
+	margin: 2em 0;
+	font-family: $font;
+	font-weight: 700;
+	font-size: 1.25em;
+}
+
+cite {
+    display: block;
+    margin-top: 0.125em;
+    font-family: $font;
+    font-weight: 400;
+    font-style: normal;
+
+    &:before {
+        content: "\2014 \0020";;
+    }
+}
+
+
+/**
+  * Absolute Background Cover
+*/
+
+.absolute-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+
+/**
+  * Base colour classes
+*/
+
+.bg {
+    background-color: $color-alpha;
+}
+
+.bg-black {
+    background-color: $color-black;
+}
+
+.bg-white {
+    background-color: $color-white;
+}
+
+.relative {
+	position: relative;
+}
+
+.cp_embed_wrapper {
+	margin: 2em 0;
+}
+
+.video {
+    position:relative;
+	padding-bottom: 52.202%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+    margin: 2em 0;
+
+    iframe, object, embed {
+        position:absolute;
+        top:0;
+	    left:0;
+        width:100%;
+	    height:100%;
+    }
+}
+
+.clientlist {
+    width: 100%;
+    clear: both;
+}
+
+    .clientlist__item {
+        width: 50%;
+        height: 190px;
+        @include mobilefirst(em($bp-md)) {
+            width: 25%;
+        }
+        display: block;
+        float: left;
+        position: relative;
+    }
+
+    .clientlist__img {
+        padding: 0 20px;
+        width: initial;
+        width: auto;
+        display: inline-block;
+        @include centre;
+    }
+
+.companylogo {
+    width: initial;
+    width: auto;
+    float: right;
+}

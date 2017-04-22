@@ -1,0 +1,320 @@
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+
+
+
+
+@mixin vertical-align {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+@mixin horizontal-align {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+@mixin centre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+// Apply ‘attention’ styles in one go.
+@mixin attention($self: false) {
+
+    @if($self != false) {
+
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+
+    }
+
+    @else {
+
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+
+    }
+
+}
+
+
+@mixin rounded($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
+
+@mixin shadow($x, $y, $blur, $color) {
+    -webkit-box-shadow: $x $y $blur $color;
+       -moz-box-shadow: $x $y $blur $color;
+            box-shadow: $x $y $blur $color;
+}
+
+
+@mixin shadow-inset($x, $y, $blur, $color) {
+    -webkit-box-shadow: inset $x $y $blur $color;
+       -moz-box-shadow: inset $x $y $blur $color;
+            box-shadow: inset $x $y $blur $color;
+}
+
+
+@mixin transition($property, $time, $ease) {
+    -webkit-transition: $property $time $ease;
+       -moz-transition: $property $time $ease;
+         -o-transition: $property $time $ease;
+            transition: $property $time $ease;
+}
+
+
+@mixin box-sizing($border-box) {
+    -webkit-box-sizing: $border-box;
+       -moz-box-sizing: $border-box;
+        -ms-box-sizing: $border-box;
+         -o-box-sizing: $border-box;
+            box-sizing: $border-box;
+}
+
+// @include box-sizing(border-box);
+
+@mixin opacity($opacity, $percentage) {
+    opacity: $opacity; filter: alpha(opacity = $percentage); zoom:1;
+}
+
+
+@mixin linear-gradient($from, $to) {
+    // Fallback for sad browsers
+    background-color: $to;
+    // Mozilla Firefox
+    background-image: -moz-linear-gradient($from, $to);
+    // Opera
+    background-image: -o-linear-gradient($from, $to);
+    // Webkit (Safari 4+, Chrome 1+)
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $from), color-stop(1, $to));
+    // Webkit (Chrome 11+)
+    background-image: -webkit-linear-gradient($from, $to);
+    // IE 10
+    background-image: -ms-linear-gradient($from, $to);
+    // W3C
+    background-image: linear-gradient($from, $to);
+}
+
+
+/**
+  * Clear after floats
+*/
+
+
+@mixin clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/**
+  * Convert font-size from px to rem with px fallback
+  * @param $size - the value in pixel you want to convert
+  * Credit - http://bit.ly/1H7jo0n
+  * e.g. p { @include fontSize(12px); }
+*/
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+
+
+/**
+  * Function for converting a px based font-size to rem.
+*/
+
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+/**
+  * Mixin that will include the fall back px declaration
+  * as well as the calculated rem value.
+*/
+
+@mixin line-height($size) {
+    line-height: $size;
+    line-height: calculateRem($size);
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+
+/**
+  * Apply clearfix to this classes by default
+*/
+
+
+.clear, .group{
+    @include clearfix;
+}
+
+
+/**
+  * Responsive mixins
+*/
+
+
+@mixin responsive($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
+@mixin mobilefirst($res) {
+    @media screen and (min-width: $res) {
+        @content;
+    }
+}
+
+@mixin mobilefirst-between($start, $end) {
+    @media screen and (min-width: $start) and (max-width : $end) {
+        @content;
+    }
+}
+
+/**
+  * Underline Slide from left and back
+*/
+
+@mixin border-slide($mainColor: $color-black, $borderColor: $color-alpha, $height: 3px) {
+    position: relative;
+    color: $mainColor;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        border-bottom: $height solid $borderColor;
+        transition: width 0.4s ease-in-out;
+    }
+
+    &:hover:after {
+        width: 100%;
+    }
+}
+
+
+
+
+/**
+  * Button Slide
+  * Need to still add hover state in parent element
+  * box-shadow: inset 175px 0 0 0 $color-alpha;
+  * color: $color-white;
+*/
+
+@mixin button-slide($pad: 0.5em 1em, $border: 3px, $fontSize: 0.9em) {
+    @extend %letter-spacing;
+    display: inline-block;
+    padding: $pad;
+    font-family: $font;
+    font-size: $fontSize;
+    color: $color-alpha;
+    border: $border solid $color-alpha;
+    box-shadow: inset 0 0 0 0 $color-alpha;
+    transition: all 0.4s ease-in-out;
+}
+
+
+
+
+
+/**
+  * Flex Grid
+*/
+
+@mixin flex-grid($sm: null, $md: null, $lg: null, $xl: null, $xxl: null, $pad: 0) {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+
+    & > * {
+        padding: $pad;
+        flex-basis: 100% / $sm;
+        max-width: 100% / $sm;
+
+        @include mobilefirst(em($bp-md)) {
+            flex-basis: 100% / $md;
+            max-width: 100% / $md;
+        }
+
+        @if $lg {
+            @include mobilefirst(em($bp-lg)) {
+                flex-basis: 100%/$lg;
+                max-width: 100%/$lg;
+            }
+        }
+
+        @if $xl {
+            @include mobilefirst(em($bp-xlg)) {
+                flex-basis: 100% / $xl;
+                max-width: 100% / $xl;
+            }
+        }
+
+        @if $xxl {
+            @include mobilefirst(em($bp-xxlg)) {
+                flex-basis: 100% / $xxl;
+                max-width: 100% / $xxl;
+            }
+        }
+    }
+}
+
+
+/**
+  * Box Shadow
+*/
+
+@mixin box-shadow($size, $color: $color-black) {
+    box-shadow: 0 $size $size * 2 rgba($color, 0.1), 0 $size $size * 2 rgba($color, 0.2);
+}

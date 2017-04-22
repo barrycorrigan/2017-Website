@@ -1,0 +1,79 @@
+<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<header class="section-padding--lg  mast">
+
+		<a class="nav  nav--white" href="/">
+			<span>Back to Posts</span>
+		</a>
+
+		<figure class="absolute-bg  mast__img" style="background-image: url('<perch:blog id="image" type="image" label="Image" order="4" />');"></figure>
+
+		<div class="mast__container">
+			<span>
+				<time datetime="<perch:blog id="postDateTime" type="date" label="Date" time="true" format="Y-m-d H:i:s" divider-before="Publishing" />" itemprop="datePublished"><perch:blog id="postDateTime" type="date" time="true" format="%d %B %Y" /></time>
+			</span>
+
+			<h1 itemprop="name  headline"><perch:blog id="postTitle" type="text" label="Title" required="true" size="xl autowidth" order="1" /></h1>
+
+			<span>
+				Posted in
+				<perch:categories id="categories" set="blog" label="Categories" display-as="checkboxes">
+		            <a href="/blog/category/<perch:category id="catSlug" type="slug" />" class="p-category  nav--white">
+		                <perch:category id="catTitle" type="text" />
+		            </a>
+		        </perch:categories>
+			</span>
+
+		</div>
+
+	</header>
+
+	<section class="section-padding  post" itemprop="articleBody">
+
+		<div class="post  e-content">
+
+			<perch:blog id="postDescHTML" type="textarea" label="Post" order="2" editor="markitup" markdown="true" size="xxl autowidth" required="true" />
+
+			<perch:blocks order="3">
+
+			<perch:block type="text" label="Text">
+				<perch:blog id="blockDescHTML" type="textarea" label="Post" editor="markitup" markdown="true" size="xxl autowidth" />
+			</perch:block>
+
+			<perch:block type="quote" label="Blockquote">
+				<blockquote>
+					<perch:blog id="quote" label="Quote" type="textarea" encode="true" size="xl autowidth" />
+					<perch:if exists="quoteby"><cite><perch:blog id="quoteby" type="text" label="From" size="xl autowidth" /></cite></perch:if>
+				</blockquote>
+			</perch:block>
+
+			<perch:block type="image" label="Feature image">
+				<figure>
+					<img src="<perch:blog id="image" type="image" width="1600" label="Image" />" />
+					<figcaption><perch:blog id="caption" type="smarttext" label="Caption" /></figcaption>
+				</figure>
+			</perch:block>
+
+
+			<perch:block type="html" label="HTML Code">
+				<perch:blog id="html" type="textarea" label="HTML Code" html="true" />
+			</perch:block>
+
+			<perch:block type="youtubehtml" label="YouTube HTML Code">
+				<div class="video">
+					<perch:blog id="youtubehtml" type="textarea" label="HTML Code" html="true" />
+				</div>
+			</perch:block>
+
+			<perch:block type="code" label="Code block"><pre class="language-<perch:blog id="syntax" type="select" label="Syntax" options="Markup|markup, CSS|css, Javascript|javascript, PHP|php, SCSS|scss" />"><code class="language-<perch:blog id="syntax" type="select" label="Syntax" options="Markup|markup, CSS|css, Javascript|javascript, PHP|php, SCSS|scss" />"><perch:blog id="codetext" type="textarea" label="Code" size="xxl autowidth" /></code></pre></perch:block>
+			</perch:blocks>
+
+
+
+		</div>
+
+	</section>
+
+</article>
+
+<perch:blog id="excerpt" type="textarea" label="Excerpt" markdown="true" order="3" suppress="true" size="s" />

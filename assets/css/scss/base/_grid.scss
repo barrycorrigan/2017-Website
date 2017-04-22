@@ -1,0 +1,204 @@
+/*------------------------------------*\
+    #GRID
+\*------------------------------------*/
+
+
+
+
+
+/**
+  * 12 Column fluid and responsive grid
+*/
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2em;
+}
+
+
+/**
+  * Added two declarations to avoid class names like .foo.col
+*/
+[class^="col"], [class*=" col"] {
+    /*display: block;*/
+}
+
+.row {
+    flex-direction: column;
+}
+
+/**
+  * Grid columns are stacked until the display size is greater than min-width
+*/
+
+$full: 8.3333333%; // Full Width for each column unit
+$unit: 5.4333333%; // Width of each grid column unit
+$margin: 2.9%; // Margin between the grid columns
+
+@include mobilefirst(em($bp-sm)) {
+
+    .row {
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -$margin;
+
+        &--nm {
+            margin-left: 0;
+        }
+    }
+
+    [class^="col"], [class*=" col"] {
+        margin-left: $margin;
+        @include box-sizing(border-box);
+    }
+
+    [class^="box"], [class*=" box"] {
+        @include box-sizing(border-box);
+        float: left;
+    }
+
+    [class^="full"], [class*=" full"] {
+        @include box-sizing(border-box);
+    }
+
+
+
+    @for $i from 1 through 12 {
+        .col-sm-#{$i} {
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+        .offset-sm-#{$i} {
+            margin-left: ($unit * $i) + ($margin * ($i + 1));
+        }
+
+        .centre-sm-#{$i} {
+            margin-left: $margin;
+            margin-left: auto;
+            margin-right: auto;
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+
+        .full-sm-#{$i} {
+            flex-basis: ($full * $i);
+            max-width: ($full * $i);
+        }
+
+        .box-sm-#{$i} {
+            width: ($full * $i);
+        }
+    }
+
+}
+
+@include mobilefirst(em($bp-md)) {
+
+    @for $i from 1 through 12 {
+        .col-md-#{$i} {
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+        .offset-md-#{$i} {
+            margin-left: ($unit * $i) + ($margin * ($i + 1));
+        }
+
+        .centre-md-#{$i} {
+            margin-left: auto;
+            margin-right: auto;
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+
+        .full-md-#{$i} {
+            flex-basis: ($full * $i);
+            max-width: ($full * $i);
+        }
+
+        .box-md-#{$i} {
+            width: ($full * $i);
+        }
+    }
+
+    .mob-hide {
+      display: block;
+   }
+
+   .mob-only {
+     display: none;
+  }
+
+}
+
+@include mobilefirst(em($bp-lg)) {
+
+    @for $i from 1 through 12 {
+        .col-lg-#{$i} {
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+        .offset-lg-#{$i} {
+            margin-left: ($unit * $i) + ($margin * ($i + 1));
+        }
+
+        .centre-lg-#{$i} {
+            margin-left: auto;
+            margin-right: auto;
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+
+        .full-lg-#{$i} {
+            flex-basis: ($full * $i);
+            max-width: ($full * $i);
+        }
+
+        .box-lg-#{$i} {
+            width: ($full * $i);
+        }
+    }
+
+    .tab-hide {
+      display: block;
+
+      &--inline {
+         display: inline-block;
+      }
+   }
+
+}
+
+
+@include mobilefirst(em($bp-xlg)) {
+
+    @for $i from 1 through 12 {
+        .col-xl-#{$i} {
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+        .offset-xl-#{$i} {
+            margin-left: ($unit * $i) + ($margin * ($i + 1));
+        }
+
+        .centre-xl-#{$i} {
+            margin-left: auto;
+            margin-right: auto;
+            flex-basis: ($unit * $i) + ($margin * ($i - 1));
+            max-width: ($unit * $i) + ($margin * ($i - 1));
+        }
+
+        .full-xl-#{$i} {
+            flex-basis: ($full * $i);
+            max-width: ($full * $i);
+        }
+
+        .box-xl-#{$i} {
+            width: ($full * $i);
+        }
+    }
+
+}

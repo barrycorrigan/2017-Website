@@ -1,0 +1,103 @@
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+
+
+
+
+
+/*------------------------------------*\
+    #BREAKPOINTS
+\*------------------------------------*/
+
+/**
+* 1. bp-small is mainly for devices below 480px (mainly iPhones etc)
+* 2. bp-med is for tablet devices i.e. iPad / iPad Mini
+* 3. bp-large is for laptops
+*/
+
+$bp-xsm: 320;
+$bp-sm: 480;
+$bp-md: 864;
+$bp-lg : 1024;
+$bp-xlg: 1224;
+$bp-xxlg: 1824;
+
+
+
+
+/*------------------------------------*\
+    #COLOUR-VARIABLES
+\*------------------------------------*/
+
+/**
+  * One of the best reasons to use Sass is variables.
+  * They help keep your code DRY, which makes it easy to maintain and change.
+  * However, with colors, it’s easy for your variables to get out of hand.
+  *
+  * Solution - Use Name that colour - http://bit.ly/1KCISUE
+  * Name your variables after colors like you were trying to do, but without the naming difficulty
+  * Suggestion by David Walsh - http://bit.ly/1I62ZLL
+*/
+
+
+
+
+/**
+  * Colours used for the Product Selector. Taken from Chicopee Americas website
+*/
+
+
+
+/**
+  * Other Random Colour Options
+*/
+
+
+
+
+/**
+* 1. Primary colour is the red colour
+* 2. Secondary colour is the Yellow colour
+* 3. Tertiary colour is the Grey colour
+* 4. Light colour is the main colour for backgrounds
+* 5. Foreground colour is the designs alternate colour for backgrounds
+* 6. Body colour is the colour of the main body text
+*/
+
+
+$color-alpha: #5da99e;
+$color-alpha--light: #F2F2F2;
+
+$color-black: #303443;
+$color-grey: #f8f9f9;
+$color-white: #fff;
+
+
+/*------------------------------------*\
+    #FONT-SIZES
+\*------------------------------------*/
+
+/**
+  * 1. Default font size is 16px.
+  * 2. The rest are various font sizes used throughout the site
+*/
+
+$base-font-size: 16px;
+
+$xx-large: 65px;
+$x-large: 40px;
+$large: 30px;
+$medium: 26px;
+$small: 18px;
+$x-small: 15px;
+$xx-small: 14px;
+
+/*------------------------------------*\
+    #FONT-FAMILIES
+\*------------------------------------*/
+
+$font-header: 'Space Mono', monospace;
+$font-body: 'Inconsolata', monospace;
+$font-post: 'Lora', serif;
+$font: 'Montserrat', sans-serif;

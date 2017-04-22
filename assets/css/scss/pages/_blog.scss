@@ -1,0 +1,386 @@
+/*------------------------------------*\
+    #BLOG PAGE
+\*------------------------------------*/
+
+
+
+
+
+.previews {
+    @include mobilefirst(em($bp-md)) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & > * {
+
+        &:first-child {
+            position: relative;
+            height: 30em;
+            background-color: $color-black;
+
+            @include mobilefirst(em($bp-md)) {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 45%;
+            }
+
+            &:after {
+                @extend %overlay;
+            }
+        }
+
+        &:last-child {
+            min-height: 100vh;
+
+            @include mobilefirst(em($bp-md)) {
+                margin-left: 45%;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+/**
+  * Tabs
+  * On the Blog page for posts and categories
+*/
+
+.list {
+    @extend %letter-spacing;
+
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+
+    @include mobilefirst(em($bp-md)) {
+        padding-left: 8em;
+        padding-right: 8em;
+    }
+
+    @include mobilefirst(em($bp-xxlg)) {
+        padding-left: 10em;
+        padding-right: 10em;
+    }
+
+    &__item {
+        cursor: pointer;
+        list-style-type: none;
+
+        &:not(.active) {
+            @include border-slide();
+        }
+
+        &.active {
+            border-bottom: 3px solid $color-alpha;
+        }
+    }
+}
+
+.list {
+    &.active {
+        will-change: opacity;
+        animation: fade-in 1s both;
+    }
+}
+
+
+
+
+
+/**
+  * Blog Post Preview
+  * On the Blog page
+*/
+
+.previews {
+
+    @include mobilefirst(em($bp-md)) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & > * {
+
+        &:first-child {
+            position: relative;
+            height: 30em;
+            background-color: $color-black;
+
+            @include mobilefirst(em($bp-md)) {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 45%;
+            }
+
+            &:after {
+                @extend %overlay;
+            }
+        }
+
+        &:last-child {
+            min-height: 100vh;
+
+            @include mobilefirst(em($bp-md)) {
+                margin-left: 45%;
+            }
+        }
+
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        padding: 2em;
+        color: $color-white;
+
+        span {
+            @extend %letter-spacing;
+            font-family: $font;
+        }
+    }
+
+}
+
+
+.preview {
+    transition: background-color 0.2s ease-in-out;
+    border-bottom: 1px solid #E6E6E6;
+    background-color: $color-alpha--light;
+
+    &:nth-child(even) {
+        background-color: $color-white;
+    }
+
+    &:hover {
+        //background-color: $color-alpha--light;
+
+        // .preview__more {
+        //     box-shadow: inset 175px 0 0 0 $color-alpha;
+        //     color: $color-white;
+        // }
+    }
+
+    &__img {
+        will-change: opacity;
+        animation: fade-in 1s both;
+
+        background: $color-black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        z-index: 0;
+        -webkit-transition: height 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: height 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -ms-transition: height 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: height 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: height 500ms cubic-bezier(0.42, 0, 0.58, 1);
+
+        &:before {
+            content: " ";
+            display: block;
+            height: 351px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, transparent 1%, rgba($color-black, 0.07) 26%, rgba($color-black, 0.5) 71%, rgba($color-black, 0.7) 100%);
+            background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, transparent 1%, rgba($color-black, 0.05) 26%, rgba($color-black, 0.5) 71%, rgba($color-black, 0.7) 100%);
+            background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, transparent 1%, rgba($color-black, 0.07) 26%, rgba($color-black, 0.5) 71%, rgba($color-black, 0.7) 100%);
+            background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, transparent 1%, rgba($color-black, 0.07) 26%, rgba($color-black, 0.5) 71%, rgba($color-black, 0.7) 100%);
+            -webkit-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -moz-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -ms-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -o-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        &:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($color-black, 0.2);
+            -webkit-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -moz-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -ms-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            -o-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+            transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: 4em 2em;
+
+        @include mobilefirst(em($bp-md)) {
+            padding: 4em 7em;
+        }
+
+        @include mobilefirst(em($bp-xxlg)) {
+            padding-left: 9em;
+            padding-right: 9em;
+        }
+    }
+
+    &__date {
+        font-family: $font;
+        font-weight: 600;
+        color: $color-black;
+        margin-bottom: 0.5em;
+        display: block;
+    }
+
+    &__header {
+        margin-bottom: 0.5em;
+    }
+
+    &__headerlink {
+        color: $color-alpha;
+
+        &:hover {
+            color: $color-black;
+        }
+    }
+
+    &__excerpt {
+        color: $color-black;
+    }
+
+    &__more {
+        @include button-slide();
+    }
+}
+
+
+
+
+
+/**
+  * Category Card
+  * On the blog page under category tab
+*/
+
+.cards {
+    @include flex-grid(1, 2, $xxl: 3, $pad: 0.25em);
+    padding: 2em 1em;
+
+    @include mobilefirst(em($bp-md)) {
+        padding: 4em 2em;
+    }
+}
+
+.card {
+
+    &__link {
+        @include box-shadow(1px);
+        position: relative;
+        display: block;
+        background-color: $color-white;
+        transition: background-color 0.2s ease-in-out;
+
+        &:after {
+            @include box-shadow(3px);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            will-change: opacity;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        &:hover {
+            background-color: $color-alpha--light;
+
+            &:after {
+                opacity: 1;
+            }
+
+            .card__more {
+                box-shadow: inset 175px 0 0 0 $color-alpha;
+                color: $color-white;
+            }
+        }
+
+    }
+
+    &__img {
+        position: relative;
+        height: 12em;
+        background-color: $color-black;
+
+        &:after {
+            @extend %overlay;
+        }
+    }
+
+    &__container {
+        padding: 2em 1em;
+    }
+
+    &__header {
+        color: $color-alpha;
+    }
+
+    &__count {
+        color: $color-black;
+    }
+
+    &__more {
+        @include button-slide(0.25em);
+    }
+
+}
+
+
+
+
+
+/**
+  * Pagination
+  * On the Blog page when enough posts to paginate
+*/
+
+.pagination {
+    @extend %letter-spacing;
+    display: flex;
+    width: 100%;
+
+    & > * {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        padding: 2em 0;
+        color: $color-white;
+        background-color: $color-black;
+        transition: background-color 0.4s ease-in-out;
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-alpha;
+        }
+    }
+}
